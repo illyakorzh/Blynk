@@ -1,0 +1,106 @@
+.reactItems {
+  width: 500px;
+  height: fit-content;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
+}
+
+.items {
+  text-align: left;
+  color: #808080;
+  margin: 0 0 8px;
+  font-size: 40px;
+
+}
+
+.reactItemsInputGroup {
+  margin: 10px 0;
+  display: flex;
+}
+
+.formControl {
+  color: #495057;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  width: 100%;
+  margin: 0 10px;
+  padding: 6px 12px;
+}
+
+.buttonInfo {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  white-space: nowrap;
+  padding: 0.375rem 0.75rem;
+  margin-left: 5px;
+  border-radius: 0.25rem;
+}
+
+.buttonInfo:hover {
+  background-color: #1a818e;
+}
+
+.listGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.listGroupItem {
+  border: 1px solid grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #fff;
+}
+
+.listGroupItemSelected {
+  border-left: 4px solid deeppink;
+}
+
+.listGroupItem:first-child {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.listGroupItem:last-child {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.rightSide {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.commentsLength {
+  color: #fff;
+  background-color: #17a2b8;
+  font-size: 12px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonDelete {
+  color: #dc3545;
+  background-color: transparent;
+  border: 1px solid #dc3545;
+  white-space: nowrap;
+  padding: 0.375rem 0.75rem;
+  border-radius: 3px;
+}
+
+.buttonDelete:hover {
+  background-color: #dc3545;
+  color: white;
+  white-space: nowrap;
+}
