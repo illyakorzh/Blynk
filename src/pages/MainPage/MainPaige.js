@@ -1,10 +1,11 @@
 import s from './MainPage.module.css';
 import { Items } from '../../components/Items/Items';
 import { Comments } from '../../components/Comments/Comments';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-export const MainPaige = () => {
+export const MainPaige = memo( () => {
+
   const userState = useSelector(state => state.user);
   const [selectedUser, setSelectedUser] = useState('');
 
@@ -48,5 +49,5 @@ export const MainPaige = () => {
       <Comments userState={userState} selectedUser={selectedUser} />
     </div>
   </div>);
-};
+});
 

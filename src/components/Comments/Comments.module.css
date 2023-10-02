@@ -13,10 +13,7 @@
   margin-bottom: 20px;
 }
 
-.reactItemsInputGroup {
-  display: flex;
-  gap: 5px;
-}
+
 
 .color {
   min-width: 35px;

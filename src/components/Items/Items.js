@@ -1,19 +1,19 @@
 import s from "./Items.module.css";
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addUser, deleteUser } from '../../Store/reducers/userReducer';
+import React, { memo } from 'react';
+import { useForm } from 'react-hook-form';
+import { Alert, Button, Input,  } from '@mui/material';
 
-export const Items = ({ userState, selectedUser, setSelectedUser, }) => {
+
+
+export const Items = memo(({ userState, selectedUser, setSelectedUser, }) => {
+
 
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
 
-  const addName = (event) => {
-    if (name.trim().length > 0) {
-      event.preventDefault();
-      dispatch(addUser(name.trim()));
-      setName('');
-    }
+  const addName = ({ name }) => {
+    dispatch(addUser(name));
   };
 
   const addSelectID = (id) => {
@@ -26,19 +26,36 @@ export const Items = ({ userState, selectedUser, setSelectedUser, }) => {
     event.stopPropagation();
     dispatch(deleteUser(id));
   };
+  const { register, handleSubmit, formState: { errors, isValid, }, } = useForm({ mode: 'onChange' });
   return (<div className={s.reactItems}>
     <h1 className={s.items}>Items</h1>
-    <form className={s.reactItemsInputGroup}>
-      <input
-        className={s.formControl}
-        type="text"
-        placeholder="Type name here..."
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-        required
-      />
-      <button className={s.buttonInfo} onClick={addName}>Add New</button>
+    <form
+      className={s.reactItemsInputGroup}
+      onSubmit={handleSubmit(addName)}
+    >
+      <div
+        style={{
+          width: '100%', display: 'flex',
+        }}
+      >
+        <Input
+          className={s.formControl}
+          {...register("name", {
+            required: { value: true, message: "Name is required" },
+            pattern: { value: /^[A-Z][a-z]*$/, message: "Name must start with capital letter" },
+            minLength: { value: 4, message: "Name must be at least 3 symbols" },
+            maxLength: { value: 10, message: "Name must be at most 10 symbols" },
+          })} />
+
+        <Button disabled={!isValid} type="submit" variant="contained">Submit</Button>
+      </div>
+      {errors.name && <Alert
+        style={{
+          marginLeft: '10px',
+        }} severity="error"
+      >{errors.name.message} </Alert>}
     </form>
+
     <ul className={s.listGroup}>
       {Object.keys(userState).length ? Object.keys(userState).map(key => <li
         key={key}
@@ -57,4 +74,4 @@ export const Items = ({ userState, selectedUser, setSelectedUser, }) => {
       </li>) : ""}
     </ul>
   </div>);
-};
+});
